@@ -1,5 +1,215 @@
 package projeto;
 
+/**
+ * Sistema de Cadastro e Análise de Alunos
+ *
+ * Agora vamos juntar os conceitos estudados em um pequeno sistema.
+ *
+ * O objetivo não é criar um sistema profissional, mas construir um programa que
+ * obrigue você a utilizar os conceitos fundamentais de lógica de programação.
+ *
+ * 🎯 Objetivo
+ *
+ * Criar um sistema de cadastro e análise de alunos executado pelo terminal.
+ *
+ * O programa deverá apresentar um menu principal:
+ *
+ * =================================
+ *      SISTEMA DE ALUNOS
+ * =================================
+ *
+ * 1 - Cadastrar alunos
+ * 2 - Exibir alunos
+ * 3 - Exibir médias
+ * 4 - Exibir maior média
+ * 5 - Exibir menor média
+ * 6 - Exibir aprovados
+ * 7 - Exibir reprovados
+ * 8 - Estatísticas da turma
+ * 9 - Sair
+ *
+ * Escolha uma opção:
+ *
+ * 1 — Cadastro de alunos
+ *
+ * O programa deverá permitir cadastrar uma quantidade definida de alunos.
+ *
+ * Para cada aluno, armazene:
+ *
+ *     Nome
+ *     Idade
+ *     Três notas
+ *
+ * Uma possível estrutura:
+ *
+ * nomes[]
+ * idades[]
+ * notas[][]
+ *
+ * Por exemplo:
+ *
+ * nomes[0] = "João"
+ * idades[0] = 20
+ *
+ * notas[0][0] = 8
+ * notas[0][1] = 7
+ * notas[0][2] = 9
+ *
+ * 2 — Exibir alunos
+ *
+ * Apresente todos os alunos cadastrados.
+ * Exemplo
+ *
+ * Aluno 1
+ * Nome: João
+ * Idade: 20
+ *
+ * Aluno 2
+ * Nome: Maria
+ * Idade: 22
+ *
+ * 3 — Exibir médias
+ *
+ * Calcule a média das três notas de cada aluno.
+ * Exemplo
+ *
+ * João
+ * Notas: 8, 7, 9
+ * Média: 8.0
+ *
+ * Maria
+ * Notas: 6, 5, 7
+ * Média: 6.0
+ *
+ * 4 — Exibir maior média
+ *
+ * Identifique qual aluno possui a maior média.
+ * Exemplo
+ *
+ * Maior média:
+ *
+ * Aluno: João
+ * Média: 9.2
+ *
+ * 5 — Exibir menor média
+ *
+ * Identifique qual aluno possui a menor média.
+ * Exemplo
+ *
+ * Menor média:
+ *
+ * Aluno: Pedro
+ * Média: 4.8
+ *
+ * 6 — Exibir aprovados
+ *
+ * Considere:
+ *
+ * Média >= 7 → Aprovado
+ *
+ * Liste todos os alunos aprovados.
+ * Exemplo
+ *
+ * ===== APROVADOS =====
+ *
+ * João - Média: 8.3
+ * Maria - Média: 7.5
+ *
+ * 7 — Exibir reprovados
+ *
+ * Considere:
+ *
+ * Média < 5 → Reprovado
+ *
+ * Liste todos os alunos reprovados.
+ * Exemplo
+ *
+ * ===== REPROVADOS =====
+ *
+ * Pedro - Média: 4.2
+ * Carlos - Média: 3.8
+ *
+ * 8 — Estatísticas da turma
+ *
+ * Apresente informações gerais sobre a turma.
+ *
+ * O programa deverá calcular:
+ *
+ *     Quantidade de alunos.
+ *     Média geral da turma.
+ *     Maior média.
+ *     Menor média.
+ *     Quantidade de aprovados.
+ *     Quantidade de reprovados.
+ *
+ * Exemplo
+ *
+ * ===== ESTATÍSTICAS =====
+ *
+ * Alunos: 10
+ *
+ * Média da turma: 7.2
+ *
+ * Maior média: 9.5
+ * Menor média: 4.1
+ *
+ * Aprovados: 7
+ * Reprovados: 3
+ *
+ * 9 — Sair
+ *
+ * Ao selecionar 9, o programa deverá finalizar.
+ *
+ * Exiba uma mensagem:
+ *
+ * Programa encerrado.
+ * Até a próxima!
+ *
+ * Desafios extras
+ *
+ * Depois de concluir o projeto principal, tente implementar os seguintes recursos.
+ * Desafio 1 — Recuperação
+ *
+ * Crie uma situação intermediária:
+ *
+ * Média >= 7 → Aprovado
+ * Média >= 5 → Recuperação
+ * Média < 5  → Reprovado
+ *
+ * Desafio 2 — Maior nota individual
+ *
+ * Descubra a maior nota de toda a turma.
+ *
+ * Informe:
+ *
+ * Aluno
+ * Nota
+ *
+ * Desafio 3 — Menor nota individual
+ *
+ * Descubra a menor nota de toda a turma.
+ * Desafio 4 — Acima da média da turma
+ *
+ * Calcule a média geral da turma.
+ *
+ * Depois informe quais alunos possuem média acima da média da turma.
+ * Desafio 5 — Validação
+ *
+ * Não permita que o usuário informe notas menores que 0 ou maiores que 10.
+ * Desafio 6 — Menu persistente
+ *
+ * Depois de executar qualquer operação, o programa deverá retornar ao menu principal.
+ * Desafio 7 — Quantidade dinâmica
+ *
+ * Pergunte ao usuário quantos alunos serão cadastrados.
+ *
+ * Por exemplo:
+ *
+ * Quantos alunos deseja cadastrar? 10
+ *
+ * Depois crie os arrays com esse tamanho.
+ */
+
 import java.util.Scanner;
 
 public class CadastroDeAlunos {
