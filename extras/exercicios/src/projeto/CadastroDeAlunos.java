@@ -268,7 +268,6 @@ public class CadastroDeAlunos {
             opcao = entrada.nextInt();
             switch (opcao){
                 case 1:
-                    quantidadeLimiteDeAlunos = 2;
                     if (quantidadeDeAlunosCadastrados < quantidadeLimiteDeAlunos) {
                         for (; quantidadeDeAlunosCadastrados < quantidadeLimiteDeAlunos; quantidadeDeAlunosCadastrados++) {
                             System.out.printf("%nCADASTRAR ALUNO %d%n", quantidadeDeAlunosCadastrados + 1);
@@ -292,69 +291,68 @@ public class CadastroDeAlunos {
                                 } while(notaInvalida);
                             }
                         }
+                        // estatisticas
+                        double somaDasMedias = 0.0;
+                        for (int aluno = 0; aluno < quantidadeDeAlunosCadastrados; aluno++) {
+                            double somaDasNotas = 0.0;
+                            for(int nota = 0; nota < notas[aluno].length; nota++) {
+                                somaDasNotas += notas[aluno][nota];
+                                if (aluno == 0 && nota == 0) {
+                                    indiceDaMaiorNotaIndividual[0][0] = aluno;
+                                    indiceDaMaiorNotaIndividual[0][1] = nota;
+                                    maiorNotaIndividual = notas[aluno][nota];
+
+                                    indiceDaMenorNotaIndividual[0][0] = aluno;
+                                    indiceDaMenorNotaIndividual[0][1] = nota;
+                                    menorNotaIndividual = notas[aluno][nota];
+
+                                }
+                                if (notas[aluno][nota] > maiorNotaIndividual){
+                                    indiceDaMaiorNotaIndividual[0][0] = aluno;
+                                    indiceDaMaiorNotaIndividual[0][1] = nota;
+                                    maiorNotaIndividual = notas[aluno][nota];
+                                }
+
+                                if (notas[aluno][nota] < menorNotaIndividual){
+                                    indiceDaMenorNotaIndividual[0][0] = aluno;
+                                    indiceDaMenorNotaIndividual[0][1] = nota;
+                                    menorNotaIndividual = notas[aluno][nota];
+                                }
+                            }
+
+                            medias[aluno] = somaDasNotas / notas[aluno].length;
+
+                            if(medias[aluno] >= 7){
+                                quantidadeDeAprovados++;
+                            } else if (medias[aluno] >= 5){
+                                quantidadeDeRecuperacao++;
+                            } else {
+                                quantidadeDeReprovados++;
+                            }
+
+                            if(aluno == 0){
+                                maiorMedia = medias[aluno];
+                                menorMedia = medias[aluno];
+                                indiceMaiorMedia = aluno;
+                                indiceMenorMedia = aluno;
+                            }
+
+                            if (medias[aluno] > maiorMedia){
+                                maiorMedia = medias[aluno];
+                                indiceMaiorMedia = aluno;
+                            }
+
+                            if (medias[aluno] < menorMedia){
+                                menorMedia = medias[aluno];
+                                indiceMenorMedia = aluno;
+                            }
+
+                            somaDasMedias += medias[aluno];
+                        }
+                            mediaGeral = somaDasMedias / quantidadeDeAlunosCadastrados;
                     } else {
                         System.out.println("Quantidade limite de alunos atingida!");
                     }
-
-                    // estatisticas
-                    double somaDasMedias = 0.0;
-                    for (int aluno = 0; aluno < quantidadeDeAlunosCadastrados; aluno++) {
-                        double somaDasNotas = 0.0;
-                        for(int nota = 0; nota < notas[aluno].length; nota++) {
-                            somaDasNotas += notas[aluno][nota];
-                            if (aluno == 0 && nota == 0) {
-                                indiceDaMaiorNotaIndividual[0][0] = aluno;
-                                indiceDaMaiorNotaIndividual[0][1] = nota;
-                                maiorNotaIndividual = notas[aluno][nota];
-
-                                indiceDaMenorNotaIndividual[0][0] = aluno;
-                                indiceDaMenorNotaIndividual[0][1] = nota;
-                                menorNotaIndividual = notas[aluno][nota];
-
-                            }
-                            if (notas[aluno][nota] > maiorNotaIndividual){
-                                indiceDaMaiorNotaIndividual[0][0] = aluno;
-                                indiceDaMaiorNotaIndividual[0][1] = nota;
-                                maiorNotaIndividual = notas[aluno][nota];
-                            }
-
-                            if (notas[aluno][nota] < menorNotaIndividual){
-                                indiceDaMenorNotaIndividual[0][0] = aluno;
-                                indiceDaMenorNotaIndividual[0][1] = nota;
-                                menorNotaIndividual = notas[aluno][nota];
-                            }
-                        }
-
-                        medias[aluno] = somaDasNotas / notas[aluno].length;
-
-                        if(medias[aluno] >= 7){
-                            quantidadeDeAprovados++;
-                        } else if (medias[aluno] >= 5){
-                            quantidadeDeRecuperacao++;
-                        } else {
-                            quantidadeDeReprovados++;
-                        }
-
-                        if(aluno == 0){
-                            maiorMedia = medias[aluno];
-                            menorMedia = medias[aluno];
-                            indiceMaiorMedia = aluno;
-                            indiceMenorMedia = aluno;
-                        }
-
-                        if (medias[aluno] > maiorMedia){
-                            maiorMedia = medias[aluno];
-                            indiceMaiorMedia = aluno;
-                        }
-
-                        if (medias[aluno] < menorMedia){
-                            menorMedia = medias[aluno];
-                            indiceMenorMedia = aluno;
-                        }
-
-                        somaDasMedias += medias[aluno];
-                    }
-                    mediaGeral = somaDasMedias / medias.length;
                     break;
                 case 2:
                     if (quantidadeDeAlunosCadastrados > 0) {
@@ -485,7 +483,6 @@ public class CadastroDeAlunos {
                 case 11:
                     if (quantidadeDeAlunosCadastrados > 0) {
                         System.out.printf("%n===== ALUNOS COM MEDIA ACIMA DA MEDIA =====");
-                        boolean mediaAcimaDaMedia = false;
                         System.out.printf("%nMedia geral: %.2f", mediaGeral);
                         System.out.printf("%nAlunos: ");
                         for(int media = 0; media < medias.length; media++){
