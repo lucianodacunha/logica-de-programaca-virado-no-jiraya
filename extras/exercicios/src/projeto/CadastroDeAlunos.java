@@ -288,7 +288,7 @@ public class CadastroDeAlunos {
                         System.out.println("Nenhum aluno cadastrado!");
                     }
                     break;
-                case 13:
+                case 12:
                     if(quantidadeDeAlunosCadastrados > 0) {
                         System.out.printf(
                                 "%n===== ESTATÍSTICAS =====%n" +
@@ -311,7 +311,7 @@ public class CadastroDeAlunos {
                         System.out.println("Nenhum aluno cadastrado!");
                     }
                     break;
-                case 20:
+                case 13:
                     System.out.println("Saindo...");
                     break;
                 default:
